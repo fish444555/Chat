@@ -1,1 +1,9 @@
-Run the MainControl.java class in src/com/Server/view
+# Run the MainControl.java class in src/com/Server/view
+
+I created three packages in this server project. They are common package, model package and view package. 
+
+The common package includes the common information shared with the client project. This package includes two classes, the first one is Message class which consists of the information in every transmission. Such as the name of sender, the name of receiver, the contents of the information and so on. The second one is User class. This class is used to check the authority of users when somebody log in. After the connection has been built, the program creates a user object for everyone. 
+
+The view package is quite simple. It just displays a panel with one button which is to start the server. 
+
+The main operations are in the model package. There are four classes in this package. The ServerUser class does not do anything. In this project, I did not use database or file technology to check the correctness of this information. For simplistic, this program recognizes the "123" as the correct password. The username ranges from 1 to 10. The MyServer class creates sockets listening to some clients to connect. When the user enters the correct username and password, server creates a connection between itself and the client. I used not to put these kinds of codes into a loop. In that situation, the server closes the socket after one client connects to it. So I wrote these codes into a while loop. However, this situation had some bugs when more than one clients connect to it. The sockets become quite messy. So I use multi-thread. The server creates a new socket when a client connects to it. I apply the ManageClientThread class to manage these sockets. I use a hash map record each client coupled with its socket. When other clients connect to server, I send this hash map to those clients. Those clients can know which friends have already logged in. 

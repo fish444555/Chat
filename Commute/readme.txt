@@ -1,1 +1,10 @@
-Run the ClientV.java class in src/com/client/view
+# Run the ClientV.java class in src/com/client/view
+
+Similar to the Commute_Server project. I created three packages in this client project. They are common package, model package and view package. 
+The common package includes the common information shared with the server project. This package includes two classes, the first one is Message class which consists of the information in every transmission. Such as the name of sender, the name of receiver, the contents of the information and so on. The second one is User class. This class is used to check the authority of users when somebody login. After the connection has been built, the program creates an user object for everyone. 
+
+The view package consists three view panels. There are ClientV panel, Chat panel and Friends panel. The ClientV panel is the first panel when user runs this program. It requires user enters username and password. After checking the correctness of this information, it creates the friends panel in which shows the friends of the client. The friends have already logged in displayed in colorful label while others displayed in the gray level label. If I double click my online friend’s label, the program creates a chat panel. In this panel, I can send message to the friend. 
+
+The main connection operations are in the model package. There are five classes in this package. The ClientUser class connects to the server. It sends the information which receives from the panel to the server. If the login information is correct, this program creates a thread to maintain this connection (ClientConServerThread class) and adds this socket into the hash map which records the users information couple with socket information. This information is managed in the ManageClientConServerThread class. Because each client may open several chat panels when communicates with their friends. This information is managed by the ManageChatDiag class. The ClientCon class is a bridge which connects the view package with the model package. It calls ClientUser class to check the correctness of the login information which comes from ClientV panel. 
+
+
